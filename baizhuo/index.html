@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>白浊之村-隐秘的山谷村落与人文纪实</title>
+    <meta name="description" content="白浊之村，一个隐藏在群山之间的独特村落，探索其地理风貌、民俗传承、现代生活与旅游指南。这里没有喧嚣，只有山泉与故事。">
+    <meta name="keywords" content="白浊之村,山谷村落,民俗文化,乡村纪实,自然景观,旅游攻略,人文历史">
+    <style>
+        /* 全局重置与基础 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+            background: #f7f4ee;
+            color: #2e2a26;
+            line-height: 1.7;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        /* 页眉 */
+        .site-header {
+            background: #2b3a2f;
+            padding: 18px 0;
+            border-bottom: 4px solid #a98d5c;
+        }
+        .header-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #f2ead8;
+            letter-spacing: 2px;
+        }
+        .logo span {
+            color: #d4b483;
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: #e6ddd0;
+            font-size: 1rem;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+        }
+        .nav-links a:hover {
+            border-bottom-color: #d4b483;
+            color: #fff;
+        }
+        /* 首屏主视觉 */
+        .hero {
+            background: linear-gradient(135deg, #3f4f3a 0%, #5a6e52 100%);
+            color: #f5efe3;
+            padding: 80px 0 70px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            right: -60px;
+            top: -60px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,240,0.05);
+            border-radius: 50%;
+        }
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .hero-text h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        .hero-text h1 i {
+            font-style: normal;
+            color: #d4b483;
+        }
+        .hero-text p {
+            font-size: 1.15rem;
+            margin-bottom: 30px;
+            color: #e0dacb;
+            max-width: 600px;
+        }
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 40px;
+            font-weight: 600;
+            transition: 0.3s;
+            border: 2px solid transparent;
+        }
+        .btn-primary {
+            background: #d4b483;
+            color: #2b3a2f;
+        }
+        .btn-primary:hover {
+            background: #e5ca9a;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            border-color: #d4b483;
+            color: #d4b483;
+        }
+        .btn-outline:hover {
+            background: rgba(212,180,131,0.15);
+        }
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            background: rgba(255,255,255,0.06);
+            padding: 25px;
+            border-radius: 18px;
+            backdrop-filter: blur(4px);
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-num {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #f0e4c8;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: #c9c1ae;
+            letter-spacing: 1px;
+        }
+        /* 信息卡片通用 */
+        .section {
+            padding: 70px 0;
+        }
+        .section-alt {
+            background: #f0ebe0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #2b3a2f;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title h2::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #a98d5c;
+            margin: 12px auto 0;
+            border-radius: 3px;
+        }
+        .section-title p {
+            color: #6b625a;
+            margin-top: 12px;
+            font-size: 1.05rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* 村庄简介 */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .intro-text p {
+            margin-bottom: 18px;
+            font-size: 1.05rem;
+            color: #3e3832;
+        }
+        .intro-fact {
+            background: #fff;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+        .fact-list {
+            list-style: none;
+        }
+        .fact-list li {
+            padding: 12px 0;
+            border-bottom: 1px dashed #ddd2bf;
+            display: flex;
+            gap: 15px;
+            align-items: baseline;
+        }
+        .fact-list li:last-child {
+            border-bottom: none;
+        }
+        .fact-tag {
+            font-weight: 700;
+            color: #a98d5c;
+            min-width: 70px;
+        }
+        /* 民俗文化 */
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .culture-card {
+            background: #fff;
+            border-radius: 18px;
+            padding: 30px 25px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+            border-top: 4px solid #a98d5c;
+            transition: 0.3s;
+        }
+        .culture-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 26px rgba(0,0,0,0.08);
+        }
+        .culture-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #2b3a2f;
+        }
+        .culture-card p {
+            color: #5f574f;
+            font-size: 0.98rem;
+        }
+        /* 今日生活 */
+        .life-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .life-item {
+            background: #fff;
+            border-radius: 16px;
+            padding: 28px;
+            display: flex;
+            gap: 18px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+        .life-icon {
+            font-size: 2.2rem;
+            background: #efe7d8;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .life-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+        }
+        .life-content p {
+            color: #5b534b;
+            font-size: 0.96rem;
+        }
+        /* 旅游指南 */
+        .travel-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .travel-card {
+            background: #fff;
+            border-radius: 18px;
+            padding: 0;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+        }
+        .travel-img-placeholder {
+            height: 180px;
+            background: linear-gradient(145deg, #c3b69b, #a89a7c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.7);
+            font-size: 3rem;
+        }
+        .travel-info {
+            padding: 24px;
+        }
+        .travel-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        .travel-info p {
+            color: #645b52;
+            font-size: 0.95rem;
+        }
+        .travel-season {
+            display: inline-block;
+            background: #efe7d8;
+            color: #4a443c;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 14px;
+            font-weight: 600;
+        }
+        /* 常见问题 */
+        .faq-list {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: #fff;
+            border-radius: 14px;
+            margin-bottom: 16px;
+            padding: 22px 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        .faq-q {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #2b3a2f;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .faq-q::before {
+            content: "Q";
+            background: #a98d5c;
+            color: #fff;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        .faq-a {
+            color: #57504a;
+            padding-left: 38px;
+        }
+        /* 页脚 */
+        .site-footer {
+            background: #222b23;
+            color: #b9b2a4;
+            padding: 40px 0 20px;
+            font-size: 0.95rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        .footer-brand p {
+            margin-top: 12px;
+            color: #938d80;
+        }
+        .footer-links h4 {
+            color: #d9d2c2;
+            margin-bottom: 14px;
+            font-size: 1rem;
+        }
+        .footer-links ul {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+        .footer-links a:hover {
+            color: #e0d6c0;
+        }
+        .copyright {
+            border-top: 1px solid #3a443b;
+            padding-top: 20px;
+            text-align: center;
+            color: #7b766a;
+            font-size: 0.85rem;
+        }
+        /* 响应式 */
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            .culture-grid,
+            .travel-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+        @media (max-width: 600px) {
+            .culture-grid,
+            .travel-grid,
+            .life-grid {
+                grid-template-columns: 1fr;
+            }
+            .header-wrap {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 18px;
+            }
+            .hero {
+                padding: 50px 0;
+            }
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            .section {
+                padding: 50px 0;
+            }
+            .btn-group {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-wrap">
+            <div class="logo">白浊之村<span>·</span>山居纪</div>
+            <ul class="nav-links">
+                <li><a href="#intro">村落寻踪</a></li>
+                <li><a href="#culture">民俗风物</a></li>
+                <li><a href="#life">今日生活</a></li>
+                <li><a href="#travel">旅行指引</a></li>
+                <li><a href="#faq">常见问答</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- 主视觉 -->
+        <section class="hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1>走进 <i>白浊之村</i><br>山谷深处的静谧家园</h1>
+                    <p>白浊之村，坐落于群山环抱的溪谷之畔。村名源于山涧中乳白色的泉水——富含矿物质的溪流在阳光下泛着温润的白光。这里保留着百年民居、古法农耕与淳朴人情。</p>
+                    <div class="btn-group">
+                        <a href="#travel" class="btn btn-primary">规划探访</a>
+                        <a href="#culture" class="btn btn-outline">了解民俗</a>
+                    </div>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-num">约300</div>
+                        <div class="stat-label">常住村民</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">600年</div>
+                        <div class="stat-label">建村历史</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">海拔850m</div>
+                        <div class="stat-label">平均高度</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 村落简介 -->
+        <section class="section" id="intro">
+            <div class="container">
+                <div class="section-title">
+                    <h2>白浊之村 · 基本印象</h2>
+                    <p>一个名字听起来神秘，实则充满生活气息的山谷村落。</p>
+                </div>
+                <div class="intro-grid">
+                    <div class="intro-text">
+                        <p>白浊之村并非一个广为人知的旅游地标，它更像一个被时间遗忘的角落。村名的由来，与村东那道常年流淌的“白泉”有关。泉水从石灰岩层涌出，携带大量矿物质，呈现出乳白色泽，当地人称之“白浊水”。这种水不能直接饮用，却滋养了周边独特的湿地植被。</p>
+                        <p>村民世代以种植高山云雾茶、采集山珍为生。村落建筑多为青石与木材混合结构，屋檐翘角，保留着明清时期的营造风格。近年来，部分年轻人返乡开设茶舍与民宿，让老屋重新焕发生机。</p>
+                        <p>如果你向往的不是精致商业化的古镇，而是一处能听见溪水、看见炊烟、感受四季分明的真实山村，白浊之村会是一个值得放慢脚步的地方。</p>
+                    </div>
+                    <div class="intro-fact">
+                        <ul class="fact-list">
+                            <li><span class="fact-tag">村名由来</span> 源于乳白色的矿物泉水</li>
+                            <li><span class="fact-tag">主要物产</span> 云雾茶、竹笋、野生猕猴桃</li>
+                            <li><span class="fact-tag">传统建筑</span> 青石木构、悬山顶、砖雕门楼</li>
+                            <li><span class="fact-tag">节庆活动</span> 春社祭泉、秋收篝火会</li>
+                            <li><span class="fact-tag">交通路况</span> 盘山公路已硬化，自驾可达</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 民俗文化 -->
+        <section class="section section-alt" id="culture">
+            <div class="container">
+                <div class="section-title">
+                    <h2>民俗与风物</h2>
+                    <p>白浊之村的独特环境塑造了别具一格的乡土文化。</p>
+                </div>
+                <div class="culture-grid">
+                    <div class="culture-card">
+                        <h3>🫖 祭泉传统</h3>
+                        <p>每年农历三月初三，村民会聚集在“白泉”源头举行祭泉仪式，感谢山泉滋养土地。仪式包括诵读祭文、抛撒五谷，随后家家户户分食泉水煮的鸡蛋，寓意祛病消灾。</p>
+                    </div>
+                    <div class="culture-card">
+                        <h3>🏠 古法夯土墙</h3>
+                        <p>村内现存十余座夯土墙老宅，墙体厚达半米，冬暖夏凉。建造时以黄土、石灰、糯米浆混合夯实，工艺复杂。部分老宅在保留外墙的基础上进行了内部现代化改造。</p>
+                    </div>
+                    <div class="culture-card">
+                        <h3>🌿 草木染手艺</h3>
+                        <p>利用山里常见的栀子、艾草、板栗壳等植物，村里的老人仍掌握着传统草木染技法。染出的布料颜色柔和，多用于制作茶席、包袱布和夏季衣衫。</p>
+                    </div>
+                    <div class="culture-card">
+                        <h3>🥢 山野饮食</h3>
+                        <p>笋干炖腊肉、泉水点豆腐、蕨菜炒蛋是当地家常菜。每年清明前后，村民会制作一种加入鼠曲草的绿色米粿，口感软糯，带有清香。</p>
+                    </div>
+                    <div class="culture-card">
+                        <h3>🎋 竹编技艺</h3>
+                        <p>村后有大片毛竹林，竹编是过去每个男人的基本技能。如今仍有几位老匠人编织竹篮、竹筛和捕鱼笼，工艺精细，兼具实用与美感。</p>
+                    </div>
+                    <div class="culture-card">
+                        <h3>📜 口传歌谣</h3>
+                        <p>村中流传着一种用当地方言演唱的山歌调，多表现劳作与爱情。没有乐谱，靠代代口耳相传。近年在文化馆的帮助下，部分歌谣被录音整理。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 今日生活 -->
+        <section class="section" id="life">
+            <div class="container">
+                <div class="section-title">
+                    <h2>今日白浊之村</h2>
+                    <p>传统与新生正在这个村落里平静地交织。</p>
+                </div>
+                <div class="life-grid">
+                    <div class="life-item">
+                        <div class="life-icon">☕</div>
+                        <div class="life-content">
+                            <h3>返乡青年的茶室</h3>
+                            <p>村口的老粮仓被改造成一间茶室，售卖本地高山茶和手冲咖啡。周末常有城里的年轻人来此小坐，透过落地窗看梯田云雾。</p>
+                        </div>
+                    </div>
+                    <div class="life-item">
+                        <div class="life-icon">📶</div>
+                        <div class="life-content">
+                            <h3>网络与便利</h3>
+                            <p>村里已覆盖4G网络，部分民宿提供Wi-Fi。村中心有一家小型便利店，基本日用品可以买到。最近的镇卫生院在15公里外。</p>
+                        </div>
+                    </div>
+                    <div class="life-item">
+                        <div class="life-icon">🌱</div>
+                        <div class="life-content">
+                            <h3>生态农业实践</h3>
+                            <p>几位村民尝试用有机方式种植水稻和蔬菜，不使用化肥农药。收获的农产品通过线上社群销售，也为村里带来新的收入渠道。</p>
+                        </div>
+                    </div>
+                    <div class="life-item">
+                        <div class="life-icon">🏫</div>
+                        <div class="life-content">
+                            <h3>村小与孩子</h3>
+                            <p>村小学目前只有十几个学生，采用复式教学。虽然规模小，但老师认真负责，还开设了乡土植物课程，带孩子们认识家乡。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 旅游指引 -->
+        <section class="section section-alt" id="travel">
+            <div class="container">
+                <div class="section-title">
+                    <h2>探访白浊之村</h2>
+                    <p>如果你计划前往，以下信息或许能帮助你更好地安排。</p>
+                </div>
+                <div class="travel-grid">
+                    <div class="travel-card">
+                        <div class="travel-img-placeholder">🏞️</div>
+                        <div class="travel-info">
+                            <h3>白泉步道</h3>
+                            <p>沿溪而建的简易步道，全程约2公里，可近距离观赏乳白色的泉水和钙化滩涂。清晨时分常有薄雾，景色尤为宁静。</p>
+                            <span class="travel-season">适合春秋季</span>
+                        </div>
+                    </div>
+                    <div class="travel-card">
+                        <div class="travel-img-placeholder">🏡</div>
+                        <div class="travel-info">
+                            <h3>古宅群参观</h3>
+                            <p>村中保存较好的几座清代宅院可入内参观，砖雕门楼和木窗棂值得细看。部分老宅仍有人居住，参观时请保持礼貌。</p>
+                            <span class="travel-season">全年可看</span>
+                        </div>
+                    </div>
+                    <div class="travel-card">
+                        <div class="travel-img-placeholder">🌄</div>
+                        <div class="travel-info">
+                            <h3>后山观景台</h3>
+                            <p>从村后小路徒步约40分钟可至一片草坡，视野开阔，能俯瞰整个村庄和层层梯田。日落时分光线极美。</p>
+                            <span class="travel-season">夏秋傍晚</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align:center; margin-top:40px; color:#5b534b;">
+                    <p>💡 温馨提示：村里住宿接待能力有限，节假日建议提前联系预订。山路弯多，自驾请减速慢行。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 常见问题 -->
+        <section class="section" id="faq">
+            <div class="container">
+                <div class="section-title">
+                    <h2>关于白浊之村的常见疑问</h2>
+                    <p>我们整理了一些探访者最常问到的问题，供你参考。</p>
+                </div>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-q">白浊之村的名字听起来有点奇怪，真的叫这个名字吗？</div>
+                        <div class="faq-a">是的。村名源于当地一口矿物质含量很高的“白泉”，泉水呈乳白色，过去村民称其为“白浊水”，村落便由此得名。名字虽然朴素，但背后有真实的地理渊源。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q">村里的泉水可以喝吗？</div>
+                        <div class="faq-a">不建议直接饮用。白泉水的矿物成分复杂，钙镁含量较高，口感不佳且可能引起肠胃不适。村里生活用水来自另一处山泉，经过处理后可以饮用。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q">适合带小孩或老人去吗？</div>
+                        <div class="faq-a">村内主要道路平坦，古宅参观和茶室休息都适合老人小孩。但后山步道有一定坡度，且部分路段为土路，雨后湿滑，带老人小孩建议只走白泉步道。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q">有民宿或餐馆吗？</div>
+                        <div class="faq-a">目前村内有5家左右由老屋改造的民宿，提供简单的家常菜，以当地食材为主。没有专门的餐馆，用餐基本在民宿解决。旺季建议提前确认。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q">最佳到访季节是什么时候？</div>
+                        <div class="faq-a">春夏之交（5-6月）梯田灌水，草木葱郁；秋天（9-10月）稻田金黄，气候凉爽。冬季偶尔有雪，但山路可能结冰，出行需谨慎。</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo" style="color:#f2ead8;">白浊之村<span style="color:#a98d5c;">·</span>山居纪</div>
+                    <p>记录一个山谷村落的地理、人文与日常。愿每一次探访都带着尊重与好奇。</p>
+                </div>
+                <div class="footer-links">
+                    <h4>内容栏目</h4>
+                    <ul>
+                        <li><a href="#intro">村落寻踪</a></li>
+                        <li><a href="#culture">民俗风物</a></li>
+                        <li><a href="#life">今日生活</a></li>
+                        <li><a href="#travel">旅行指引</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>访客须知</h4>
+                    <ul>
+                        <li>尊重村民生活习惯</li>
+                        <li>不随意进入私人院落</li>
+                        <li>带走所有垃圾</li>
+                        <li>山间注意防火</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 白浊之村人文纪录 · 本页面内容基于公开信息与实地访谈整理，部分描述为概括性介绍。</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
