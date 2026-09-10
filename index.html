@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>王佳仪-个人主页与作品展示空间</title>
+    <meta name="description" content="这里是王佳仪的个人主页，展示个人简介、作品集锦、成长经历与联系渠道，带你认识一个真实立体的王佳仪。">
+    <meta name="keywords" content="王佳仪,个人主页,作品集,个人简介,人物专访">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: #faf9f7;
+            color: #2d2a26;
+            line-height: 1.7;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* 页眉 */
+        .site-header {
+            background: #ffffff;
+            border-bottom: 1px solid #eae6e0;
+            padding: 18px 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-mark {
+            width: 40px;
+            height: 40px;
+            background: #c49b6a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+        .logo-text {
+            font-size: 22px;
+            font-weight: 650;
+            color: #1f1b16;
+            letter-spacing: 1px;
+        }
+        .main-nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        .main-nav a {
+            font-size: 16px;
+            color: #4a443c;
+            padding: 6px 2px;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+        }
+        .main-nav a:hover {
+            border-bottom-color: #c49b6a;
+            color: #1f1b16;
+        }
+
+        /* 首屏 Hero */
+        .hero {
+            background: linear-gradient(135deg, #f5efe8 0%, #e9dfd3 100%);
+            padding: 80px 0 60px;
+            border-bottom: 1px solid #e0d7cc;
+        }
+        .hero .container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        .hero-info {
+            flex: 1 1 380px;
+        }
+        .hero-info h1 {
+            font-size: 42px;
+            font-weight: 650;
+            color: #1f1b16;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        .hero-tagline {
+            font-size: 18px;
+            color: #7a6e5e;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+        }
+        .hero-desc {
+            font-size: 16px;
+            color: #4a443c;
+            max-width: 500px;
+            margin-bottom: 32px;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            border-radius: 40px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+        .btn-primary {
+            background: #c49b6a;
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background: #a97f4e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+        }
+        .btn-outline {
+            border-color: #a0907d;
+            color: #4a443c;
+        }
+        .btn-outline:hover {
+            background: #fff;
+            border-color: #c49b6a;
+            color: #1f1b16;
+        }
+        .hero-photo {
+            flex: 0 0 280px;
+            text-align: center;
+        }
+        .photo-frame {
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            background: #d9c9b8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+            border: 6px solid rgba(255,255,255,0.6);
+        }
+        .photo-frame span {
+            font-size: 80px;
+            font-weight: 600;
+            color: #8a7460;
+            letter-spacing: 4px;
+        }
+
+        /* 通用区块 */
+        .section {
+            padding: 70px 0;
+        }
+        .section-alt {
+            background: #ffffff;
+            border-top: 1px solid #eae6e0;
+            border-bottom: 1px solid #eae6e0;
+        }
+        .section-title {
+            font-size: 30px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1f1b16;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #c49b6a;
+            border-radius: 2px;
+        }
+        .section-sub {
+            color: #8a7a68;
+            margin-bottom: 40px;
+            font-size: 15px;
+        }
+
+        /* 关于区块 */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        .about-card {
+            background: #faf7f3;
+            padding: 30px;
+            border-radius: 16px;
+            border-left: 4px solid #c49b6a;
+        }
+        .about-card h3 {
+            font-size: 20px;
+            margin-bottom: 14px;
+            color: #2d2a26;
+        }
+        .about-card p {
+            color: #4a443c;
+            font-size: 15px;
+        }
+        .info-list {
+            list-style: none;
+            margin-top: 16px;
+        }
+        .info-list li {
+            padding: 12px 0;
+            border-bottom: 1px dashed #ddd3c8;
+            display: flex;
+            gap: 16px;
+            font-size: 15px;
+        }
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+        .info-label {
+            color: #8a7a68;
+            min-width: 70px;
+            font-weight: 500;
+        }
+        .info-value {
+            color: #2d2a26;
+        }
+
+        /* 作品展示 */
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 30px;
+        }
+        .work-card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.04);
+            transition: 0.3s;
+            border: 1px solid #eee9e2;
+        }
+        .work-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+        }
+        .work-thumb {
+            height: 180px;
+            background: linear-gradient(135deg, #d8cfc2, #cbb9a5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+        .work-info {
+            padding: 22px 20px;
+        }
+        .work-info h3 {
+            font-size: 18px;
+            margin-bottom: 6px;
+            color: #1f1b16;
+        }
+        .work-info p {
+            font-size: 14px;
+            color: #6b6257;
+            line-height: 1.6;
+        }
+
+        /* 经历时间线 */
+        .timeline {
+            margin-top: 30px;
+            position: relative;
+            padding-left: 30px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #ddd3c8;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 20px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -27px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #c49b6a;
+            border: 2px solid #fff;
+            box-shadow: 0 0 0 2px #c49b6a;
+        }
+        .timeline-year {
+            font-size: 18px;
+            font-weight: 600;
+            color: #c49b6a;
+            margin-bottom: 4px;
+        }
+        .timeline-content {
+            background: #faf7f3;
+            padding: 18px 22px;
+            border-radius: 12px;
+            border: 1px solid #eee9e2;
+        }
+        .timeline-content h3 {
+            font-size: 17px;
+            margin-bottom: 6px;
+        }
+        .timeline-content p {
+            font-size: 14px;
+            color: #4a443c;
+        }
+
+        /* 数据/标签 */
+        .stats-row {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        .stat-item {
+            flex: 1 1 140px;
+        }
+        .stat-number {
+            font-size: 36px;
+            font-weight: 650;
+            color: #1f1b16;
+            display: block;
+        }
+        .stat-label {
+            color: #8a7a68;
+            font-size: 14px;
+            margin-top: 4px;
+            display: block;
+        }
+
+        /* 联系/CTA */
+        .contact-box {
+            background: linear-gradient(135deg, #f0e7dc, #e4d5c4);
+            border-radius: 24px;
+            padding: 50px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .contact-box h2 {
+            font-size: 28px;
+            margin-bottom: 12px;
+            color: #1f1b16;
+        }
+        .contact-box p {
+            color: #4a443c;
+            max-width: 520px;
+            margin: 0 auto 28px;
+        }
+        .contact-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* FAQ */
+        .faq-list {
+            margin-top: 30px;
+            max-width: 800px;
+        }
+        .faq-item {
+            background: #fff;
+            border: 1px solid #eee9e2;
+            border-radius: 14px;
+            padding: 22px 24px;
+            margin-bottom: 16px;
+        }
+        .faq-item h3 {
+            font-size: 17px;
+            margin-bottom: 8px;
+            color: #1f1b16;
+        }
+        .faq-item p {
+            font-size: 15px;
+            color: #4a443c;
+        }
+
+        /* 页脚 */
+        .site-footer {
+            background: #2d2a26;
+            color: #c9c0b6;
+            padding: 45px 0 30px;
+            margin-top: 20px;
+        }
+        .footer-flex {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .footer-about {
+            max-width: 340px;
+        }
+        .footer-about h3 {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+        .footer-about p {
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        .footer-links {
+            display: flex;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        .footer-links h4 {
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 14px;
+            font-weight: 500;
+        }
+        .footer-links ul {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+        .footer-links a {
+            font-size: 14px;
+            color: #c9c0b6;
+            transition: 0.2s;
+        }
+        .footer-links a:hover {
+            color: #fff;
+        }
+        .copyright {
+            border-top: 1px solid #3d3935;
+            margin-top: 30px;
+            padding-top: 22px;
+            text-align: center;
+            font-size: 14px;
+            color: #8f877e;
+        }
+
+        /* 响应式 */
+        @media (max-width: 900px) {
+            .hero .container {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .hero-desc {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .works-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 640px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 14px;
+                text-align: center;
+            }
+            .main-nav ul {
+                justify-content: center;
+                gap: 20px;
+            }
+            .hero {
+                padding: 50px 0 40px;
+            }
+            .hero-info h1 {
+                font-size: 34px;
+            }
+            .works-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-box {
+                padding: 30px 20px;
+            }
+            .section {
+                padding: 50px 0;
+            }
+            .footer-flex {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-about {
+                max-width: 100%;
+            }
+            .footer-links {
+                justify-content: center;
+                gap: 30px;
+            }
+            .section-title {
+                font-size: 26px;
+            }
+        }
+    </style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+    <!-- 页眉 -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="logo-area">
+                <div class="logo-mark">W</div>
+                <div class="logo-text">王佳仪</div>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#about">关于</a></li>
+                    <li><a href="#works">作品</a></li>
+                    <li><a href="#journey">经历</a></li>
+                    <li><a href="#contact">联系</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 首屏 -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-info">
+                <h1>王佳仪</h1>
+                <p class="hero-tagline">用作品表达 · 以真诚相遇</p>
+                <p class="hero-desc">
+                    欢迎来到王佳仪的个人空间。这里记录了我对创作的热爱、走过的路、做过的事，以及正在生长的想法。希望通过这个窗口，让你认识一个更真实的我。
+                </p>
+                <div class="hero-actions">
+                    <a href="#works" class="btn btn-primary">浏览作品</a>
+                    <a href="#contact" class="btn btn-outline">与我联系</a>
+                </div>
+            </div>
+            <div class="hero-photo">
+                <div class="photo-frame">
+                    <span>WJY</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于区块 -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">关于王佳仪</h2>
+            <p class="section-sub">一个持续探索、认真生活的人</p>
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>个人简介</h3>
+                    <p>
+                        王佳仪是一位热爱创意表达与内容策划的年轻人。关注文化、设计与人之间的连接，相信好的内容能带来长久的共鸣。目前专注于个人创作与项目实践，持续积累并分享自己的观察与思考。
+                    </p>
+                    <p style="margin-top: 14px;">
+                        喜欢阅读、旅行、记录生活中细小的闪光时刻。始终相信，真诚的交流与持续的学习能让人走得更远。
+                    </p>
+                </div>
+                <div class="about-card">
+                    <h3>档案信息</h3>
+                    <ul class="info-list">
+                        <li><span class="info-label">姓名</span><span class="info-value">王佳仪</span></li>
+                        <li><span class="info-label">兴趣领域</span><span class="info-value">内容创作 · 设计与文化 · 影像记录</span></li>
+                        <li><span class="info-label">性格特质</span><span class="info-value">认真 · 友善 · 好奇</span></li>
+                        <li><span class="info-label">当前状态</span><span class="info-value">探索更多可能性，持续创作中</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品展示 -->
+    <section class="section section-alt" id="works">
+        <div class="container">
+            <h2 class="section-title">作品集锦</h2>
+            <p class="section-sub">部分创作与项目，持续更新中</p>
+            <div class="works-grid">
+                <div class="work-card">
+                    <div class="work-thumb">拾光</div>
+                    <div class="work-info">
+                        <h3>拾光 · 主题摄影</h3>
+                        <p>一组关于城市角落与日常光影的记录，尝试捕捉那些容易被忽略的温柔瞬间。</p>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-thumb">絮语</div>
+                    <div class="work-info">
+                        <h3>絮语 · 随笔文集</h3>
+                        <p>关于成长、生活与自我对话的短篇随笔，记录不同阶段的心情与思考。</p>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-thumb">融合</div>
+                    <div class="work-info">
+                        <h3>融合 · 平面设计</h3>
+                        <p>以东方美学与现代构成为主题的视觉练习，探索传统元素的当代表达。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 经历时间线 -->
+    <section class="section" id="journey">
+        <div class="container">
+            <h2 class="section-title">成长足迹</h2>
+            <p class="section-sub">走过的路，都是值得的</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">启蒙阶段</div>
+                    <div class="timeline-content">
+                        <h3>兴趣的种子</h3>
+                        <p>从小对绘画、文字与一切美好事物有天然的好奇心，喜欢用涂鸦和日记记录生活。这份热爱在成长中逐渐清晰，成为持续创作的起点。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">探索时期</div>
+                    <div class="timeline-content">
+                        <h3>多元尝试与积累</h3>
+                        <p>在求学与实践中，接触了内容策划、视觉设计、影像创作等多个方向，通过不同项目的参与，慢慢找到了自己擅长和真正喜欢的表达方式。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">现在与未来</div>
+                    <div class="timeline-content">
+                        <h3>持续深耕与开放合作</h3>
+                        <p>保持输入与输出，认真对待每一个想法。未来希望与更多同频的朋友交流合作，一起创造有意义的内容和作品。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 简单数据 -->
+            <div class="stats-row">
+                <div class="stat-item">
+                    <span class="stat-number">10+</span>
+                    <span class="stat-label">原创项目</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5+</span>
+                    <span class="stat-label">合作经历</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">热爱与好奇</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系 CTA -->
+    <section class="section section-alt" id="contact">
+        <div class="container">
+            <div class="contact-box">
+                <h2>期待与你交流</h2>
+                <p>无论是创作合作、内容分享，还是单纯的聊天，都欢迎找到我。愿每一次相遇都有新的收获。</p>
+                <div class="contact-actions">
+                    <a href="mailto:wangjiayi@example.com" class="btn btn-primary">发送邮件</a>
+                    <a href="#faq" class="btn btn-outline">常见问题</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+        <div class="container">
+            <h2 class="section-title">常见问题</h2>
+            <p class="section-sub">关于王佳仪，你可能想知道的</p>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>王佳仪目前主要专注在哪些方面？</h3>
+                    <p>现阶段以内容创作、视觉表达和个人项目为主，同时也在不断学习新的技能，尝试将不同领域的灵感结合起来，形成自己的风格。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>是否有对外合作或参与项目的计划？</h3>
+                    <p>如果有合适的机缘，很乐意参与内容共创、设计协作或相关领域的交流合作。合作前希望双方能有充分的沟通，确保彼此理解一致。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>在哪里可以看到更多更新内容？</h3>
+                    <p>当前主要通过个人主页分享作品与动态，未来会根据情况开设更多公共平台账号，方便大家交流。可以常来这个页面看看，也可以邮件联系获取最新消息。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>如何与王佳仪取得联系？</h3>
+                    <p>最直接的方式是通过页面上的邮箱发送邮件。由于日常事务较多，回复可能稍有延迟，但每封真诚的来信都会被认真阅读。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-flex">
+                <div class="footer-about">
+                    <h3>王佳仪</h3>
+                    <p>一个认真生活、持续创作的普通人。愿用作品与真诚，与这个世界产生温柔的连接。</p>
+                </div>
+                <div class="footer-links">
+                    <div>
+                        <h4>导航</h4>
+                        <ul>
+                            <li><a href="#about">关于</a></li>
+                            <li><a href="#works">作品</a></li>
+                            <li><a href="#journey">经历</a></li>
+                            <li><a href="#contact">联系</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>关注</h4>
+                        <ul>
+                            <li><a href="#contact">合作邮箱</a></li>
+                            <li><a href="#faq">常见问题</a></li>
+                            <li><a href="#works">最新作品</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 王佳仪个人主页 · 用真诚书写每一页
+            </div>
+        </div>
+    </footer>
+
+</body>
+                  </html>
